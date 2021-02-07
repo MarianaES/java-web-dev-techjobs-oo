@@ -37,6 +37,52 @@ public class Job {
     // Custom toString, equals, and hashCode methods:
 
     @Override
+    public String toString() {
+
+        int numberOfDataNotAvailable = 0;
+
+        if (name == null) {
+            return "OOPS! This job does not seem to exist.";
+        } else if (name.equals("")) {
+            name = "Data not available";
+            numberOfDataNotAvailable++;
+        }
+
+        if (employer.getValue().equals("") ) {
+            employer.setValue("Data not available");
+            numberOfDataNotAvailable++;
+        }
+
+        if (location.getValue().equals("") ) {
+            location.setValue("Data not available");
+            numberOfDataNotAvailable++;
+        }
+
+        if (coreCompetency.getValue().equals("")) {
+            coreCompetency.setValue("Data not available");
+            numberOfDataNotAvailable++;
+        }
+
+        if (positionType.getValue().equals("")) {
+            positionType.setValue("Data not available");
+            numberOfDataNotAvailable++;
+        }
+
+        if (numberOfDataNotAvailable == 5) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        return "\n" +
+                "ID: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency +
+                "\n";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof  Job)) return false;
